@@ -1,0 +1,56 @@
+<h2 id="django-instagram">Django-Instagram</h2>
+
+<h3 id="커스텀-유저-모델-사용">커스텀 유저 모델 사용</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>member/models.py
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>from django.contrib.auth.models import AbstractUser
+
+class MyUser(AbstractUser):
+	pass
+</code></pre>
+</div>
+
+<p>커스텀 유저 모델을 정의할 때는 AbstractUser 또는 AbstractBaseUser</p>
+
+<h4 id="custom-user-model-을-settingspy-에-정의">Custom user model 을 <strong>settings.py</strong> 에 정의</h4>
+
+<p><strong>config/settings.py</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>...
+...
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+AUTH_USER_MODEL = 'member.MyUser'
+...
+...
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    
+    'member',
+]
+...
+...
+</code></pre>
+</div>
+
+<p>DB migration</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>./manage.py makemigration member
+./manage.py migrate
+</code></pre>
+</div>
+
+<p>슈퍼유저 생성</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>./manage.py createsuperuser
+</code></pre>
+</div>
+

@@ -1,0 +1,62 @@
+<h2 id="django-field">DJango Field</h2>
+
+<h3 id="one-to-one-relationship">One-to-one Relationship</h3>
+
+<p>Usermode</p>
+
+<ul>
+  <li>username</li>
+  <li>password</li>
+</ul>
+
+<p>User info model</p>
+
+<ul>
+  <li>name</li>
+  <li>Phone number</li>
+</ul>
+
+<p>user.userinfo.name</p>
+
+<p>###Foreign Key(Many-to-One)</p>
+
+<p>School (여기에는 student라는 데이터가 저장되지 않음)</p>
+
+<p>Student(Many가 되는 쪽에 Foreign키를 지정)(School의 pk가 저장됨)</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Class Students():
+	school = models.Foreignkey(school)
+</code></pre>
+</div>
+
+<p>AAA.school =school의pk</p>
+
+<p>A.student = student의 pk</p>
+
+<h2 id="many-to-many">Many-to-Many</h2>
+
+<p>Group</p>
+
+<p>Student</p>
+
+<p>중간모델이 자동으로 만들어짐</p>
+
+<blockquote>
+  <p>Group.member()</p>
+</blockquote>
+
+<p>through = ‘중간자 모델’</p>
+
+<blockquote>
+  <p>Post.users.all() - 라이크를 한 모든 사람</p>
+</blockquote>
+
+<p>Related_name = ‘like_posts’(역참조)</p>
+
+<blockquote>
+  <p>User.like_posts.all() - like한 모든 사람</p>
+</blockquote>
+
+<blockquote>
+  <p>post.like_users.all() -</p>
+</blockquote>
